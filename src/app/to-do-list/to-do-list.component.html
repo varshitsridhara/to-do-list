@@ -1,0 +1,11 @@
+<h1>{{ title}}</h1>
+<ul>
+    <input type="text" placeholder="enter the new task" #task />
+    <button (click)="addTask(task.value)">Add New Task</button>
+    <li *ngFor="let item of list">
+        <span *ngIf="!item.editMode">{{ item.name }}</span>
+        <input *ngIf="item.editMode" type="text" [(ngModel)]="item.name" />
+        <button class="updatebutton" (click)="updateTask(item)">Update</button>
+        <button (click)="removeTask(item.id)">Remove</button>
+    </li>
+</ul>
